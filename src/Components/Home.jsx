@@ -37,6 +37,10 @@ const Home = () => {
   }, []);
   return (
     <div>
+      
+        
+  
+      
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
           <Navbar.Brand href="#">Movie </Navbar.Brand>
@@ -63,14 +67,17 @@ const Home = () => {
         {movie.map(Items => {
           return (
             <div className="des">
-              <img
-                src={`https://image.tmdb.org/t/p/original/${Items.backdrop_path}`} alt=""
-              />
-              <p className="legend">
-                <h1>{Items.title}</h1>
-                <p>{Items.overview}</p>
-                <p>{Items.release_date}</p>
-              </p>
+              <div className="cards">
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${Items.backdrop_path}`}
+                  alt=""
+                />
+                <p className="legend">
+                  <h1>{Items.title}</h1>
+                  <p>{Items.overview}</p>
+                  <p>{Items.release_date}</p>
+                </p>
+              </div>
             </div>
           );
         })}
@@ -79,15 +86,16 @@ const Home = () => {
       <div className="display">
         {movie.map(Items => {
           return (
-            <Card style={{ width: "18rem" }}>
+            <Card style={{ width: "18rem" }} className="card">
               <Card.Img
                 variant="top"
                 src={`https://image.tmdb.org/t/p/original/${Items.backdrop_path}`}
               />
               <Card.Body>
-                <Card.Title>{Items.title}</Card.Title>
+                <Card.Title className="tittle">{Items.title}</Card.Title>
                 <Card.Text>{Items.overview}</Card.Text>
                 <Button
+                  className="seemore"
                   variant="primary ms"
                   onClick={() => {
                     navigate("./movie", { state: { Items } });
