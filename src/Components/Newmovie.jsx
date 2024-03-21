@@ -1,6 +1,8 @@
+
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import YouTube from "react-youtube";
+import "./Home.css";
 const Newmovie = () => {
   const opts = {
     height: "390",
@@ -36,20 +38,22 @@ const Newmovie = () => {
   }
 
   return (
-    <div>
-      <h1>{specificmovie.title}</h1>
+    <div className="see">
+      <h1 className="name">{specificmovie.title}</h1>
       <img
+        className="im"
         src={`https://image.tmdb.org/t/p/original/${specificmovie.backdrop_path}`}
         alt=""
         height="200px"
         width="200px"
       />
-      <button onClick={() => searchTrailer(specificmovie.id)}>
-        play trailer
+      <p>{specificmovie.overview}</p>
+      <h3> Relese date:{specificmovie.release_date}</h3>
+      <h2>Rating:{specificmovie.vote_average}🌟</h2>
+      <button className="bt" onClick={() => searchTrailer(specificmovie.id)}>
+        Play trailer
       </button>
-      {trailer && (
-        <YouTube videoId={trailer} opts={opts}  />
-      )}
+      {trailer && <YouTube className="youtube" videoId={trailer} opts={opts} />}
     </div>
   );
 };
